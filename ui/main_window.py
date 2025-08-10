@@ -2,6 +2,7 @@ from PySide6.QtWidgets import QMainWindow, QToolBar
 from PySide6.QtGui import QAction
 from .editor import Editor
 from .nodes.base_node_ui import BaseNodeItem
+from .nodes.intermediate_node_ui import IntermediateNodeItem
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -27,9 +28,17 @@ class MainWindow(QMainWindow):
         self.addToolBar(toolbar)
         button_add_basic_node = QAction('Добавить Ноду', self)
         button_add_basic_node.triggered.connect(self.create_basic_node)
+
+        button_add_intermediate_node = QAction('Добавить Промежуточный узел', self)
+        button_add_intermediate_node.triggered.connect(self.create_intermediate_node)
         toolbar.addAction(button_add_basic_node)
+        toolbar.addAction(button_add_intermediate_node)
 
     def create_basic_node(self):
         node = BaseNodeItem()
+        self.editor.scene.addItem(node) 
+        node.setPos(100, 100)
+    def create_intermediate_node(self):
+        node = IntermediateNodeItem()
         self.editor.scene.addItem(node) 
         node.setPos(100, 100)

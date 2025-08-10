@@ -5,10 +5,10 @@ class PinDirection(Enum):
     OUTPUT = auto()
 
 class PinType(Enum):
-    EXEC = auto()
     DATAFRAME = auto()
     STRING = auto()
     INT = auto()
+    ANYTHING = auto()
 
 class BasicPin:
     def __init__(self, name: str, pin_type: PinType, direction: PinDirection, node):

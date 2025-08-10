@@ -16,7 +16,7 @@ class BasicPinItem(QGraphicsItem):
     def paint(self, painter, option, widget=None):
 
         colors = {
-            PinType.EXEC: QColor(200, 200, 200),
+            PinType.ANYTHING: QColor(200, 200, 200),
             PinType.DATAFRAME: QColor(83, 155, 224),
             PinType.STRING: QColor(224, 155, 83),
             PinType.INT: QColor(155, 224, 83),
@@ -41,6 +41,7 @@ class BasicPinItem(QGraphicsItem):
     
     def mousePressEvent(self, event):
         scene_pos = self.mapToScene(self.radius, self.radius)
+        
         self.temp_line = QGraphicsPathItem()
         self.temp_line.setPen(QPen(Qt.black, 2))
         path = QPainterPath()

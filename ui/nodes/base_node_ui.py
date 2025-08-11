@@ -6,8 +6,10 @@ from core.pins.pins import PinDirection, PinType
 
 
 class BaseNodeItem(QGraphicsObject):
-    def __init__(self):
+    def __init__(self, logic_node = None):
         super().__init__()
+        self.logic_node = logic_node
+        
         self.rect = QRectF(0, 0, 200, 100)
         self.title = "Базовая Нода"
         self.setFlag(QGraphicsItem.ItemIsMovable, True)

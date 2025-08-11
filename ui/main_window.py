@@ -3,6 +3,7 @@ from PySide6.QtGui import QAction
 from .editor import Editor
 from .nodes.base_node_ui import BaseNodeItem
 from .nodes.intermediate_node_ui import IntermediateNodeItem
+from .nodes.read_excel_node_ui import ExcelReadNodeItem
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -31,8 +32,14 @@ class MainWindow(QMainWindow):
 
         button_add_intermediate_node = QAction('Добавить Промежуточный узел', self)
         button_add_intermediate_node.triggered.connect(self.create_intermediate_node)
+
+        button_add_excel_read_node = QAction('Добавить Считыватель Excel', self)
+        button_add_excel_read_node.triggered.connect(self.create_excel_read_node)
+        
         toolbar.addAction(button_add_basic_node)
         toolbar.addAction(button_add_intermediate_node)
+        toolbar.addAction(button_add_excel_read_node)
+
 
     def create_basic_node(self):
         node = BaseNodeItem()
@@ -40,5 +47,9 @@ class MainWindow(QMainWindow):
         node.setPos(100, 100)
     def create_intermediate_node(self):
         node = IntermediateNodeItem()
+        self.editor.scene.addItem(node) 
+        node.setPos(100, 100)
+    def create_excel_read_node(self):
+        node = ExcelReadNodeItem()
         self.editor.scene.addItem(node) 
         node.setPos(100, 100)

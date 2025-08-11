@@ -1,4 +1,4 @@
-from base_node import BaseNode
+from core.nodes.base_node import BaseNode
 
 import pandas as pd
 

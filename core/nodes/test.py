@@ -1,8 +1,8 @@
-from base_node import BaseNode
-from print_node import PrintNode
-from add_text_node import AddTextNode
-from read_excel_node import ReadExcelNode
-from table_node import TableNode
+from core.nodes.base_node import BaseNode
+# from print_node import PrintNode
+# from add_text_node import AddTextNode
+from core.nodes.read_excel_node import ReadExcelNode
+from core.nodes.table_node import TableNode
 import pandas as pd
 
 

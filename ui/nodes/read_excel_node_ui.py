@@ -1,14 +1,14 @@
 from ui.nodes.base_node_ui import BaseNodeItem
-from PySide6.QtWidgets import QGraphicsObject, QGraphicsItem, QLabel, QFileDialog, QLineEdit, QPushButton, QGraphicsProxyWidget
+from PySide6.QtWidgets import QGraphicsObject, QGraphicsItem, QLabel, QFileDialog, QLineEdit, QPushButton, QGraphicsProxyWidget, QMessageBox
 from PySide6.QtCore import QRectF, Qt, QEvent
 from PySide6.QtGui import QBrush, QPen, QColor, QFont
 from ..pins.pins_ui import BasicPinItem, BasicPin
 from core.pins.pins import PinDirection, PinType
-
+from core.nodes.read_excel_node import ReadExcelNode
 
 class ExcelReadNodeItem(BaseNodeItem):
     def __init__(self):
-        super().__init__()
+        super().__init__(logic_node=ReadExcelNode())
         self.rect = QRectF(0, 0, 200, 100)
 
         self.title = "Чтение Excel"
@@ -77,3 +77,10 @@ class ExcelReadNodeItem(BaseNodeItem):
         path, _ = QFileDialog.getOpenFileName(None, "Выбрать Excel файл", "", "Excel Files (*.xlsx *.xls)")
         if path:
             self.path_edit.setText(path)
+            self.logic_node.set_path(path)
+            try:
+                df = self.logic_node.process()  
+                QMessageBox.information(None, "DataFrame", str(df.head()))
+            except Exception as e:
+                QMessageBox.critical(None, "Ошибка", str(e))
+    

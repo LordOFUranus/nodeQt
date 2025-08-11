@@ -39,6 +39,9 @@ class BasicPinItem(QGraphicsItem):
             # круг
             painter.drawEllipse(0, 0, self.radius * 2, self.radius * 2)
     
+
+
+    
     def mousePressEvent(self, event):
         scene_pos = self.mapToScene(self.radius, self.radius)
         

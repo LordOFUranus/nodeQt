@@ -27,7 +27,8 @@ class MainWindow(QMainWindow):
     def create_toolbar(self):
         toolbar = QToolBar()
         self.addToolBar(toolbar)
-        button_add_basic_node = QAction('Добавить Ноду', self)
+      
+        button_add_basic_node = QAction('Добавить Базовую пустую Ноду', self)
         button_add_basic_node.triggered.connect(self.create_basic_node)
 
         button_add_intermediate_node = QAction('Добавить Промежуточный узел', self)
@@ -36,11 +37,17 @@ class MainWindow(QMainWindow):
         button_add_excel_read_node = QAction('Добавить Считыватель Excel', self)
         button_add_excel_read_node.triggered.connect(self.create_excel_read_node)
         
+        button_add_table_node = QAction('Показать Таблицу',self)
+
         toolbar.addAction(button_add_basic_node)
         toolbar.addAction(button_add_intermediate_node)
         toolbar.addAction(button_add_excel_read_node)
+        toolbar.addAction(button_add_table_node)
+        toolbar.addSeparator()
+        
+        button_run = QAction('Запустить', self)
 
-
+        toolbar.addAction(button_run)
     def create_basic_node(self):
         node = BaseNodeItem()
         self.editor.scene.addItem(node) 

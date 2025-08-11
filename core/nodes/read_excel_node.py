@@ -1,6 +1,6 @@
 import pandas as pd
 
-from base_node import BaseNode
+from core.nodes.base_node import BaseNode
 
 class ReadExcelNode(BaseNode):
     def __init__(self, input_data=None):

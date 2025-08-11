@@ -35,5 +35,6 @@ df = ReadExcelNode()
 df.set_path('C:/Users/Zhanibek/Downloads/Акт сверки взаимных расчетов KCC и KAZ GREEN ENER за период с 01.01.2025 по 31.07.xlsx')
 tn = TableNode()
 df.next_node = tn
-
+tn2 = TableNode()
+tn.next_node = tn2
 df.process()

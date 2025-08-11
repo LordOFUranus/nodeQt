@@ -5,6 +5,7 @@ from PySide6.QtGui import QBrush, QPen, QColor, QFont
 from ..pins.pins_ui import BasicPinItem, BasicPin
 from core.pins.pins import PinDirection, PinType
 from core.nodes.read_excel_node import ReadExcelNode
+from core.nodes.base_node import BaseNode
 
 class ExcelReadNodeItem(BaseNodeItem):
     def __init__(self):

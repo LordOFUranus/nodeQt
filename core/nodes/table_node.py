@@ -12,4 +12,8 @@ class TableNode(BaseNode):
             print('Не DataFrame')
             return
         print(self.output)
+        if self.next_node:
+            self.next_node.input = self.output
+            return self.next_node.process()
+       
         return self.output
